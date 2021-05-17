@@ -12,4 +12,11 @@ npm i
 
 npm start
 
+### Back-End
+
+First install BeautifulSoup, requests, pdftotext packages.
+
+cd ipu-result/ipu-result-backend
+
+python3 pdf_extractor.py
 

@@ -1,20 +1,5 @@
-import pdftotext
-import re
-import json
-
-with open("test-2.pdf", "rb") as f:
-    pdf = pdftotext.PDF(f)
-
-print(len(pdf))
-
-"""
-# If it's password-protected
-with open("secure.pdf", "rb") as f:
-    pdf = pdftotext.PDF(f, "secret")
-"""
-
 def getNumber(str):
-    print(str);
+    #print(str);
     num="";
     for i in str:
         if i>='0' and i<='9':
@@ -22,7 +7,7 @@ def getNumber(str):
         else:
             if len(num)<=0:
                 return 0;
-            print(num);
+            #print(num);
             return int(num);
 
     if len(num)<=0:
@@ -30,7 +15,6 @@ def getNumber(str):
                 
     return int(num);
 
-studentReport=[];
 
 def removeSpace(str):
     newStr='';
@@ -79,9 +63,8 @@ def removeSpace(str):
 
     return studentsList;
 
-def getDict(lst):
-    global studentReport;
-
+def getStudentDict(lst):
+    studentList=[];
     for l in lst:
         studentDict={};
         studentDict['enrollmentno']=l[0][0];
@@ -142,20 +125,6 @@ def getDict(lst):
         studentDict['maximummarks']=(len(subjectMarkList)-1)*100;
         studentDict['percentage']=round((totalMarks)/(len(subjectMarkList)-1),2);
         
-        studentReport.append(studentDict);
-
-
-#Iterate over all the pages
-for page in pdf:
-    if re.search("Result of Programme Code:",page) != None:
-        y = re.split("\*Passed with Grace Marks", re.split("Remarks", page, 1)[1], 1)
-        getDict(removeSpace(y[0]));
-        #print(removeSpace(y[0]));
-
-for std in studentReport:
-    print(std,"\n");
-    pass;
-
-with open("report.json", "w") as outfile: 
-        outfile.write(json.dumps(studentReport, indent=4))
-        outfile.close();
+        studentList.append(studentDict);
+    
+    return studentList;
