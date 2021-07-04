@@ -7,5 +7,4 @@ function ResultRow(){
     );
 }
 
-
 export default ResultRow;

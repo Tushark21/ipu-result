@@ -1,7 +1,7 @@
 function Header() {
   return (
     <div className="header">
-        <h1>IPU RESULT</h1>
+        <h1>GGSIPU RESULT</h1>
     </div>
   );
 }

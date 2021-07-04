@@ -23,7 +23,7 @@ class App extends React.Component {
             <Route path="/" exact component={Home} history={this.history} />
             <Route path="/report" component={ResultCard} />
           </Switch>
-
+        
           <Footer />
         </div>
       </Router>
